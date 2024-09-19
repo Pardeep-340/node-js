@@ -26,6 +26,15 @@ app.get('/create_file', (req, res) => {
     })
 })
 
+//update content in the file using the appendFile() method: content add "hello content" appendFile method
+
+app.get('/create_file_update', (req, res) => {
+    fs.appendFile('helperTwo.txt', ' This is my text.', function (err) {
+        if (err) throw err;
+        console.log('Updated!');
+    });
+})
+
 // create file and black file open() method
 
 app.get('/create_file_blank', (req, res) => {
@@ -35,7 +44,41 @@ app.get('/create_file_blank', (req, res) => {
     });
 })
 
+// Create a new file using the writeFile() method: 
 
+app.get('/write_file', (req, res) => {
+    fs.writeFile('helperfour.txt', 'hello contnet', function (err) {
+        if (err) throw err;
+        console.log('saved!')
+    })
+})
+
+//  replace contnet in the file using the writeFile() method: 
+
+app.get('/write_file_replace', (req, res) => {
+    fs.writeFile('helperfour.txt', 'This is my text', function (err) {
+        if (err) throw err;
+        console.log('Replaced!');
+    });
+})
+
+//delete file using inlink() method:
+
+app.get('/unlink_file', (req, res) => {
+    fs.unlink('helperfour.txt', function (err) {
+        if (err) throw err;
+        console.log('File deleted!');
+    })
+})
+
+//rename file in rename() method 
+
+app.get('/rename_file', (req, res) => {
+    fs.rename('helperfour.txt', 'helperfive.txt', function (err) {
+        if (err) throw err;
+        console.log('File Renamed !')
+    })
+})
 
 //localhost run
 app.listen(3000, () => {
